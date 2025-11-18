@@ -1,0 +1,87 @@
+🍅 Study Timer & Goals App
+A native iOS application developed in SwiftUI to manage study sessions, track goals, and monitor progress using the Pomodoro technique.
+
+✨ Key Features
+The app is organized into four main sections accessible via the TabBar:
+
+1. ⏱️ Timer (Pomodoro)
+The core of the application for time management.
+
+Visual Interface: Features a custom CircularProgressView with gradients and smooth animations.
+
+Pomodoro Logic: Handles the rotation between focus sessions, short breaks, and long breaks.
+
+Severe Mode: A configurable setting that cancels the current session and timer if the user exits the app while the timer is running.
+
+2. 🎯 Goals
+A system to set and track specific study targets.
+
+Target Setting: Users can define a goal (e.g., "Study Math") and assign a target number of "Pomodoros" required to complete it.
+
+Tracking: Visual progress indicators for every active goal.
+
+Editing: Includes the ability to update the title and Pomodoro target of existing goals via a modal sheet.
+
+Persistence: Goals and their completion status are saved locally using UserDefaults.
+
+3. 📖 History
+A historical log of all completed study sessions.
+
+Session Details: Displays the activity description, duration (in minutes), and date for every recorded session.
+
+Data Management: Users can tap to edit session details (description, timestamp, or duration) or swipe to delete old entries.
+
+Empty State: A user-friendly interface appears when no sessions have been recorded yet.
+
+4. ⚙️ Settings
+A configuration panel to customize the user experience.
+
+Custom Durations: Configurable timers for Pomodoro, Short Break, and Long Break durations using Steppers.
+
+Cycle Management: Adjustable setting for how many Pomodoros must be completed before triggering a Long Break.
+
+Mode Toggles: Option to enable or disable "Severe Mode".
+
+🛠️ Architecture & Tech Stack
+The project is built strictly following the MVVM (Model-View-ViewModel) pattern to separate business logic from the UI.
+
+Language: Swift 5+
+
+UI Framework: SwiftUI (utilizing NavigationStack and TabView).
+
+Reactive Framework: Combine (extensive use of @Published properties and ObservableObject).
+
+Data Persistence: UserDefaults with JSON encoding/decoding (Codable) to store sessions, goals, and user preferences.
+
+Accessibility: Integrated support for accessibilityLabel and Reduce Motion handling in animations.
+
+Project Structure
+Views: Contains the User Interface (ContentView, HistoryView, GoalsView, SettingsView, CircularProgressView, EditGoalView).
+
+ViewModels (Stores): Manage state and logic (SessionStore, GoalsStore, SettingsStore).
+
+Models: Simple data structures (StudySession, Goal).
+
+🚀 Getting Started
+Clone the repository.
+
+Open the .xcodeproj file with Xcode 15+.
+
+Ensure the deployment target is set to iOS 16.0 or higher (required for NavigationStack and modern SwiftUI syntax).
+
+Build and run on a Simulator or a physical device.
+
+📸 Screenshots
+(Add screenshots of your app here: Timer, Goals List, History Log, and Settings)
+
+🔮 Future Improvements
+Local Notifications when the timer completes.
+
+Statistical charts in the History tab.
+
+iCloud synchronization to keep data across devices.
+
+Home Screen Widgets.
+
+📄 License
+Distributed under the MIT License. See LICENSE for more information.
