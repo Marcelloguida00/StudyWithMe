@@ -1,87 +1,130 @@
-🍅 Study Timer & Goals App
-A native iOS application developed in SwiftUI to manage study sessions, track goals, and monitor progress using the Pomodoro technique.
+# 🍅 StudyWithMe
 
-✨ Key Features
-The app is organized into four main sections accessible via the TabBar:
+**StudyWithMe** is a native iOS app built with SwiftUI to manage study sessions, track goals, and monitor progress using the **Pomodoro technique**.
 
-1. ⏱️ Timer (Pomodoro)
-The core of the application for time management.
+-----
 
-Visual Interface: Features a custom CircularProgressView with gradients and smooth animations.
+## ✨ Key Features
 
-Pomodoro Logic: Handles the rotation between focus sessions, short breaks, and long breaks.
+The app is organized into four main sections accessible via the Tab Bar:
 
-Severe Mode: A configurable setting that cancels the current session and timer if the user exits the app while the timer is running.
+### ⏱️ Timer (Pomodoro)
 
-2. 🎯 Goals
-A system to set and track specific study targets.
+- Custom `CircularProgressView` with gradients and smooth animations
+- Full Pomodoro logic: focus sessions, short breaks, and long breaks
+- **Severe Mode** — cancels the current session if the user exits the app while the timer is running
 
-Target Setting: Users can define a goal (e.g., "Study Math") and assign a target number of "Pomodoros" required to complete it.
+### 🎯 Goals
 
-Tracking: Visual progress indicators for every active goal.
+- Set study goals with a title and a target number of Pomodoros to complete
+- Visual progress indicators for every active goal
+- Edit goals via a modal sheet (title and Pomodoro target)
+- Goals and completion status saved locally with `UserDefaults`
 
-Editing: Includes the ability to update the title and Pomodoro target of existing goals via a modal sheet.
+### 📖 History
 
-Persistence: Goals and their completion status are saved locally using UserDefaults.
+- Full log of all completed study sessions
+- Each entry shows activity description, duration (in minutes), and date
+- Tap to edit session details or swipe to delete
+- User-friendly empty state when no sessions have been recorded
 
-3. 📖 History
-A historical log of all completed study sessions.
+### ⚙️ Settings
 
-Session Details: Displays the activity description, duration (in minutes), and date for every recorded session.
+- Configurable durations for Pomodoro, Short Break, and Long Break using Steppers
+- Adjustable number of Pomodoros before a Long Break
+- Toggle for **Severe Mode**
 
-Data Management: Users can tap to edit session details (description, timestamp, or duration) or swipe to delete old entries.
+-----
 
-Empty State: A user-friendly interface appears when no sessions have been recorded yet.
+## 🛠️ Architecture & Tech Stack
 
-4. ⚙️ Settings
-A configuration panel to customize the user experience.
+The project follows the **MVVM** pattern to cleanly separate business logic from the UI.
 
-Custom Durations: Configurable timers for Pomodoro, Short Break, and Long Break durations using Steppers.
+|Layer       |Technology                                     |
+|------------|-----------------------------------------------|
+|Language    |Swift 5+                                       |
+|UI Framework|SwiftUI (NavigationStack, TabView)             |
+|Reactive    |Combine (@Published, ObservableObject)         |
+|Persistence |UserDefaults + JSON encoding/decoding (Codable)|
+|Extensions  |Live Activity via TimerActivityExtension       |
 
-Cycle Management: Adjustable setting for how many Pomodoros must be completed before triggering a Long Break.
+-----
 
-Mode Toggles: Option to enable or disable "Severe Mode".
+## 📋 Requirements
 
-🛠️ Architecture & Tech Stack
-The project is built strictly following the MVVM (Model-View-ViewModel) pattern to separate business logic from the UI.
+- iOS 16.0+
+- Xcode 15+
 
-Language: Swift 5+
+-----
 
-UI Framework: SwiftUI (utilizing NavigationStack and TabView).
+## 🚀 Getting Started
 
-Reactive Framework: Combine (extensive use of @Published properties and ObservableObject).
+### 1. Clone the repository
 
-Data Persistence: UserDefaults with JSON encoding/decoding (Codable) to store sessions, goals, and user preferences.
+```bash
+git clone https://github.com/Marcelloguida00/StudyWithMe.git
+cd StudyWithMe
+```
 
-Accessibility: Integrated support for accessibilityLabel and Reduce Motion handling in animations.
+### 2. Open in Xcode
 
-Project Structure
-Views: Contains the User Interface (ContentView, HistoryView, GoalsView, SettingsView, CircularProgressView, EditGoalView).
+```bash
+open StudyWithMe.xcodeproj
+```
 
-ViewModels (Stores): Manage state and logic (SessionStore, GoalsStore, SettingsStore).
+### 3. Build and run
 
-Models: Simple data structures (StudySession, Goal).
+Select a Simulator or physical device with iOS 16+ and hit `Product → Run`.
 
-🚀 Getting Started
-Clone the repository.
+> No external dependencies or API keys required.
 
-Open the .xcodeproj file with Xcode 15+.
+-----
 
-Ensure the deployment target is set to iOS 16.0 or higher (required for NavigationStack and modern SwiftUI syntax).
+## 📁 Project Structure
 
-Build and run on a Simulator or a physical device.
+```
+StudyWithMe/
+├── StudyWithMe/
+│   ├── Views/
+│   │   ├── ContentView.swift         # Tab bar and root navigation
+│   │   ├── TimerView.swift           # Pomodoro timer screen
+│   │   ├── GoalsView.swift           # Goals list and progress
+│   │   ├── HistoryView.swift         # Completed sessions log
+│   │   ├── SettingsView.swift        # App configuration
+│   │   ├── CircularProgressView.swift# Custom animated progress ring
+│   │   └── EditGoalView.swift        # Modal for editing goals
+│   ├── ViewModels/
+│   │   ├── SessionStore.swift        # Timer logic and session management
+│   │   ├── GoalsStore.swift          # Goals state and persistence
+│   │   └── SettingsStore.swift       # User preferences
+│   └── Models/
+│       ├── StudySession.swift        # Session data model
+│       └── Goal.swift                # Goal data model
+├── TimerActivityExtension/           # Live Activity extension
+└── StudyWithMe.xcodeproj
+```
 
-📸 Screenshots
-(Add screenshots of your app here: Timer, Goals List, History Log, and Settings)
+-----
 
-🔮 Future Improvements
-Local Notifications when the timer completes.
+## 🔮 Future Improvements
 
-Statistical charts in the History tab.
+- Local notifications when the timer completes
+- Statistical charts in the History tab
+- iCloud sync to keep data across devices
+- Home Screen Widgets
 
-iCloud synchronization to keep data across devices.
+-----
 
-Home Screen Widgets.
+## 📄 License
 
-📄 License
-Distributed under the MIT License. See LICENSE for more information.
+Distributed under the **MIT** License. See [`LICENSE`](LICENSE) for details.
+
+-----
+
+## 🤝 Contributing
+
+Pull requests and issues are welcome! For major changes, please open an issue first to discuss what you’d like to change.
+
+-----
+
+*StudyWithMe — stay focused, one Pomodoro at a time.* 🍅
